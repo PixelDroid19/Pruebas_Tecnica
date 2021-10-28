@@ -1,0 +1,39 @@
+{
+  "Professionals": [
+    {
+      "id": 1,
+      "img": "img/testimonials/01.jpg",
+      "state": "Ocupado",
+      "name": "Yhon"
+    },
+    {
+      "id": 2,
+      "img": "img/testimonials/01.jpg",
+      "state": "Ocupado",
+      "name": "Moncada"
+    },
+    {
+      "id": 3,
+      "img": "img/testimonials/01.jpg",
+      "state": "Desocupado",
+      "name": "Luiz"
+    },
+    {"id": 4,
+      "img": "img/testimonials/01.jpg",
+      "state": "Desocupado",
+      "name": "Yhonaiker"
+    },
+    {
+      "id": 5,
+      "img": "img/testimonials/01.jpg",
+      "state": "Ocupado",
+      "name": "Puerta"
+    },
+    {
+      "id": 6,
+      "img": "img/testimonials/01.jpg",
+      "state": "En espera",
+      "name": "Mine"
+    }
+  ]
+}
