@@ -1,6 +1,7 @@
 # PRUEBA ING DESAROLLADOR
 
-A simple application, built with React, Redux, javascript and Material UI
+A simple application, built with React, Redux, Javascript, Material UI and
+Firebase as a backend
 
 ## Set up
 
