@@ -21,7 +21,7 @@ export const MainPage = () => {
   
 
   return (
-    <div>
+    <div className="ListBoxMain">
       <ListPatient listPatient={PatientsNotTreated}/>
       <ListPatientsCaredfor ListPatientCared={ListPatientCared} />
     </div>

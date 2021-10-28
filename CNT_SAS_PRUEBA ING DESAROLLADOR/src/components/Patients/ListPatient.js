@@ -13,7 +13,6 @@ import { ExtraFeatures } from "../../hooks/useFunction";
 
 export default function ListPatient({ listPatient }) {
   const dispatch = useDispatch();
-  console.log("KK", listPatient);
   const { Patients } = useSelector((store) => store.Patients);
   const { PatientsFind } = ExtraFeatures();
 
@@ -61,7 +60,8 @@ export default function ListPatient({ listPatient }) {
   };
 
   return (
-    <>
+    <div className="ListBox">
+      <h3>Pacientes</h3>
       {listPatient !== null ? (
         <List
           sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
@@ -72,6 +72,7 @@ export default function ListPatient({ listPatient }) {
             return (
               <ListItem
                 key={e.Risk}
+                className="ListItem"
                 secondaryAction={
                   <IconButton edge="end" aria-label="comments">
                     <MedicalServicesIcon />
@@ -111,6 +112,6 @@ export default function ListPatient({ listPatient }) {
       ) : (
         <div>Loading</div>
       )}
-    </>
+    </div>
   );
 }

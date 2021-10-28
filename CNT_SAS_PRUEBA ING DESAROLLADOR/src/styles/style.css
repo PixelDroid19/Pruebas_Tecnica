@@ -1,0 +1,25 @@
+.ListBoxMain{
+    padding: 10px;
+    gap: 5px;
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax(300px, auto) );
+}
+.ListBox{
+    margin-top: 10px;
+    padding: 5px;
+    width: 100%;
+    max-width: 360px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.ListItem{
+    padding: 0px;
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.ListItem:hover{
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}

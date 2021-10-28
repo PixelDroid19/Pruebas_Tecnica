@@ -53,7 +53,8 @@ export const IMC = (weight, height) => {
   //Jóvenes:
   const priorityYoung = (Smoker, Years) => {
     if (Smoker === true) {
-      return (Years / 4 + 2).toFixed(1);
+      console.log((Years / 4 )+ 2);
+      return ((Years / 4 )+ 2);
     } else {
       return 2;
     }

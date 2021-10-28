@@ -30,11 +30,11 @@ export default function PriorityPatient({
     NutritionalAssessment,
   } = IMC(FormData.Weight, FormData.Height);
 
-  const PrioritySelect = (Age, Smoke = false, SmokeYears = 0) => {
+  const PrioritySelect = (Age, Smoke, SmokeYears) => {
     if (Age > 1 && Age < 16) {
       return Math.round(priority(parseInt(Age), parseInt(FormData.Weight), (FormData.Height)));
     } else if (Age > 16 && Age < 40 && Smoke === true) {
-      return Math.round(priorityYoung(Smoke, SmokeYears));
+      return Math.round(priorityYoung(Smoke, parseInt(SmokeYears)));
     } else if (Age > 16 && Age < 40 && Smoke === false) {
       return Math.round(priorityYoung(Smoke));
     } else if (Age >= 41 && Age < 100) {
@@ -51,12 +51,12 @@ export default function PriorityPatient({
     nutritionalAssessment: NutritionalAssessment(),
     PatientPriority: Math.round(PrioritySelect(
       FormData.age,
-      FormData.Smoking,
+      FormData.Smoke,
       FormData.SmokingYears
     )),
     Risk: risk(
       FormData.age,
-      PrioritySelect(FormData.age, FormData.Smoking, FormData.SmokingYears)
+      PrioritySelect(FormData.age, FormData.Smoke, FormData.SmokingYears)
     ).toFixed(1),
     professional: professional,
     state: state,
@@ -109,7 +109,7 @@ export default function PriorityPatient({
             label="Prioridad de paciente"
             value={PrioritySelect(
               FormData.age,
-              FormData.Smoking,
+              FormData.Smoke,
               FormData.SmokingYears
             )}
             fullWidth
@@ -126,7 +126,7 @@ export default function PriorityPatient({
               FormData.age,
               PrioritySelect(
                 FormData.age,
-                FormData.Smoking,
+                FormData.Smoke,
                 FormData.SmokingYears
               )
             ).toFixed(1)}

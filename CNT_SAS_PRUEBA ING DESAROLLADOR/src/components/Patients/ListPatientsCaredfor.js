@@ -6,24 +6,26 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
-import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
+import FactCheckIcon from '@mui/icons-material/FactCheck';
 
 export default function ListPatientsCaredfor({ ListPatientCared }) {
 
   return (
-    <>
+    <div className="ListBox">
+      <h3>Atendidos</h3>
       {ListPatientCared !== undefined  ? (
         <List
-          sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+          sx={{ bgcolor: "background.paper" }}
         >
           {ListPatientCared.map((e) => {
             const labelId = `checkbox-list-label-${e.firstName}`;
             return (
               <ListItem
+              className="ListItem"
                 key={e.Risk}
                 secondaryAction={
                   <IconButton edge="end" aria-label="comments">
-                    <MedicalServicesIcon />
+                    <FactCheckIcon />
                   </IconButton>
                 }
                 disablePadding
@@ -53,6 +55,6 @@ export default function ListPatientsCaredfor({ ListPatientCared }) {
       ) : (
         <div>Loading</div>
       )}
-    </>
+    </div>
   );
 }
