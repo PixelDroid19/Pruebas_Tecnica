@@ -1,10 +1,27 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# PokeApp
 
-## Available Scripts
+A simple application, built with React, Redux, javascript and Material UI
 
-In the project directory, you can run:
+## Set up
 
-### `yarn start`
+You'll need [Node.js](https://nodejs.org/) on your local development machine.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Install Node Js: [Node web](https://nodejs.org/)
+2. Clone the repo
+3. Run `$ npm install or yarn` to install the dependencies
+
+## Up and running
+
+1.  Run `$ npm run start or yarn start`
+2. Visit `http://localhost:3000`
+3. Enjoy :)
+
+## Features
+
+* Support:
+  * Pokemon search
+  * Pokemon Features
+  * Login, Register and Logout
+  
+# Demo
+[Live demo](https://pokemonpage-53d31.web.app/)
