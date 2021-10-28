@@ -109,13 +109,14 @@ export const IMC = (weight, height) => {
 
 //Funciones extras
 export const ExtraFeatures = (Age, priorida) => {
-  const getMaxRisk = (array) => {
+  const getMaxRisk = (array, attended) => {
     let NewArray = [];
     for (let i = 0; i < array.length; i++) {
-      if (array[i].Risk > 4) {
+      if (array[i].Risk > 4 && array[i].attended === false) {
         NewArray.push(array[i]);
       }
     }
+    
     return NewArray;
   };
 
