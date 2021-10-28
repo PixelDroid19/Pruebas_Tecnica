@@ -20,8 +20,8 @@ You'll need [Node.js](https://nodejs.org/) on your local development machine.
 ## Features
 
 * Support:
-  * Pokemon search
-  * Pokemon Features
+  * 
+  * 
   * Login, Register and Logout
   
 # Demo
