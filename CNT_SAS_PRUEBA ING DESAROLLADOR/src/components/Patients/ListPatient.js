@@ -61,7 +61,7 @@ export default function ListPatient({ listPatient }) {
 
   return (
     <div className="ListBox">
-      <h3>Pacientes</h3>
+      <h3>Sala de espera</h3>
       {listPatient !== null ? (
         <List
           sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
@@ -71,7 +71,7 @@ export default function ListPatient({ listPatient }) {
 
             return (
               <ListItem
-                key={e.Risk}
+                key={e.medicalHistory}
                 className="ListItem"
                 secondaryAction={
                   <IconButton edge="end" aria-label="comments">

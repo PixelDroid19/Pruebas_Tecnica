@@ -39,8 +39,8 @@ function Copyright(props) {
       align="center"
       {...props}
     >
-      {"Design by Victor "}
-      <Link color="inherit" href="https://www.linkedin.com/in/ohtico/">
+      {"Design by Damien "}
+      <Link color="inherit" href="https://www.linkedin.com/">
         Linkedin
       </Link>{" "}
       {new Date().getFullYear()}

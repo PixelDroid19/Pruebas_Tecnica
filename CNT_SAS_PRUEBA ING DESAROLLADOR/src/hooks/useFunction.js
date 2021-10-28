@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export const ActionButton = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -53,8 +53,8 @@ export const IMC = (weight, height) => {
   //Jóvenes:
   const priorityYoung = (Smoker, Years) => {
     if (Smoker === true) {
-      console.log((Years / 4 )+ 2);
-      return ((Years / 4 )+ 2);
+      console.log(Years / 4 + 2);
+      return Years / 4 + 2;
     } else {
       return 2;
     }
@@ -116,7 +116,7 @@ export const ExtraFeatures = (Age, priorida) => {
         NewArray.push(array[i]);
       }
     }
-    
+
     return NewArray;
   };
 
@@ -154,6 +154,12 @@ export const ExtraFeatures = (Age, priorida) => {
     } else if (sel === false) {
       for (let i = 0; i < Array.length; i++) {
         if (Array[i].attended === false) {
+          NewArray.push(Array[i]);
+        }
+      }
+    } else if (sel === "Old") {
+      for (let i = 0; i < Array.length; i++) {
+        if (Array[i].attended === false && Array[i].age >= 41) {
           NewArray.push(Array[i]);
         }
       }
