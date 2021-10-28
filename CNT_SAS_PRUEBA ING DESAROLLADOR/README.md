@@ -1,4 +1,4 @@
-# PokeApp
+# PRUEBA ING DESAROLLADOR
 
 A simple application, built with React, Redux, javascript and Material UI
 
