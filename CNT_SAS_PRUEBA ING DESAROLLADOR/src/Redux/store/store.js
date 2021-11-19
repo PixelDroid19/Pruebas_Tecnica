@@ -1,7 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { LoginReducer, RegisterReducer } from "../reducers/LoginReducer";
-import { patientsReducer, FormDataReducer } from "../reducers/patientstReducer";
+import {
+  patientsReducer,
+  FormDataReducer,
+  UrgencyReducer,
+} from "../reducers/patientstReducer";
 
 const composeEnhancers =
   (typeof window !== "undefined" &&
@@ -12,7 +16,8 @@ const reducers = combineReducers({
   Login: LoginReducer,
   Register: RegisterReducer,
   Patients: patientsReducer,
-  PatientForm: FormDataReducer
+  Urgency: UrgencyReducer,
+  PatientForm: FormDataReducer,
 });
 
 export const store = createStore(

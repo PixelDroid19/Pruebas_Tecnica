@@ -14,12 +14,12 @@ export const ListPatientsRisk = ({ listPatient }) => {
       <h4>Pacientes con mayor Riesgo</h4>
       {listPatient !== undefined ? (
         <List sx={{ bgcolor: "background.paper" }}>
-          {listPatient.map((e) => {
+          {listPatient.map((e, index) => {
             const labelId = `checkbox-list-label-${e.firstName}`;
             return (
               <ListItem
                 className="ListItem"
-                key={e.Risk}
+                key={index}
                 secondaryAction={
                   <IconButton edge="end" aria-label="comments">
                     <WarningIcon />

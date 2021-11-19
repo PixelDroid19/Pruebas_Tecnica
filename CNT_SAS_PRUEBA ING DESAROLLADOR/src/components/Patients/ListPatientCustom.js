@@ -6,16 +6,16 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
-import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
+import BorderColorIcon from '@mui/icons-material/BorderColor';
 import { useDispatch, useSelector } from "react-redux";
 import { EditarData } from "../../Redux/Actions/actionPatients";
 import { ExtraFeatures } from "../../hooks/useFunction";
 
-export default function ListPatient({ listPatient }) {
+export default function ListPatientCustom({ listPatient, RoomName, Icon = null }) {
   const dispatch = useDispatch();
   const { Patients } = useSelector((store) => store.Patients);
   const { PatientsFind } = ExtraFeatures();
-
+  console.log(listPatient);
   const handleToggle = (Firstname, Lastname, Num, attended) => () => {
     const {
       age,
@@ -61,22 +61,36 @@ export default function ListPatient({ listPatient }) {
 
   return (
     <div className="ListBox">
-      <h3>Sala de espera</h3>
-      {listPatient !== null ? (
+      <h3>{RoomName}</h3>
+      {listPatient !== null || listPatient.length !== 0 ? (
         <List
-          sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+          sx={{
+            width: "100%",
+            maxWidth: 360,
+            bgcolor: "background.paper",
+            position: "relative",
+            overflow: "auto",
+            maxHeight: 300,
+            "& ul": { padding: 0 },
+          }}
         >
-          {listPatient.map((e) => {
+          {listPatient.map((e, index) => {
             const labelId = `checkbox-list-label-${e.firstName}`;
 
             return (
               <ListItem
-                key={e.medicalHistory}
+                key={index}
                 className="ListItem"
                 secondaryAction={
-                  <IconButton edge="end" aria-label="comments">
-                    <MedicalServicesIcon />
-                  </IconButton>
+                  Icon !== null ? (
+                    <IconButton edge="end" aria-label="comments">
+                      <Icon />
+                    </IconButton>
+                  ) : (
+                    <IconButton edge="end" aria-label="comments">
+                      <BorderColorIcon />
+                    </IconButton>
+                  )
                 }
                 disablePadding
               >

@@ -1,18 +1,29 @@
 import React from "react";
 import { ListPatientsRisk } from "./Patients/ListPatientsRisk";
-import ListPatient from "./Patients/ListPatient";
-import ListPatientsCaredfor from "./Patients/ListPatientsCaredfor";
+import ListPatientCustom from "./Patients/ListPatientCustom";
 import { ExtraFeatures } from "../hooks/useFunction";
 import { useSelector } from "react-redux";
 import PrimarySearchAppBar from "../components/AppBar/AppBar";
+//Iconos
+import TimerIcon from "@mui/icons-material/Timer";
+import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
 
 export const MainPage = () => {
   const { ListPatientsCared, getMaxRisk } = ExtraFeatures();
   const { Patients } = useSelector((store) => store.Patients);
+  const { urgency } = useSelector((store) => store.Urgency);
+  let Pacientes_No_Atendidos = [],
+    Pacientes_Atendidos = [],
+    Listar_Pacientes_Mayor_Riesgo = [];
 
-  const Listar_Pacientes_Mayor_Riesgo = getMaxRisk(Patients);
-  const Pacientes_No_Atendidos = ListPatientsCared(Patients, false);
-  const Pacientes_Atendidos = ListPatientsCared(Patients, true);
+  if (urgency === undefined || Patients === null) {
+    console.log("No hay pacientes");
+  } else {
+    Listar_Pacientes_Mayor_Riesgo = getMaxRisk(Patients);
+    Pacientes_No_Atendidos = ListPatientsCared(urgency, false);
+    Pacientes_Atendidos = ListPatientsCared(Patients, true);
+  }
+
   //const Paciente_Mas_Anciano = ListPatientsCared(Patients, "Old");
 
   //const Paciente_Mas_Anciano
@@ -26,8 +37,18 @@ export const MainPage = () => {
     <>
       <PrimarySearchAppBar />
       <div className="ListBoxMain">
-        <ListPatient listPatient={Pacientes_No_Atendidos} />
-        <ListPatientsCaredfor ListPatientCared={Pacientes_Atendidos} />
+        <ListPatientCustom
+          listPatient={Pacientes_No_Atendidos}
+          RoomName={"Sala de espera"}
+          Icon={TimerIcon}
+        />
+
+        <ListPatientCustom
+          listPatient={Pacientes_Atendidos}
+          RoomName={"Pacientes Atendidos"}
+          Icon={MedicalServicesIcon}
+        />
+
         <ListPatientsRisk listPatient={Listar_Pacientes_Mayor_Riesgo} />
       </div>
     </>

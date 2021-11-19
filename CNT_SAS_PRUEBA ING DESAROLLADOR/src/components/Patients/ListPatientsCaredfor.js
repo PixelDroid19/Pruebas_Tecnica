@@ -13,13 +13,23 @@ export default function ListPatientsCaredfor({ ListPatientCared }) {
     <div className="ListBox">
       <h3>Atendidos</h3>
       {ListPatientCared !== undefined ? (
-        <List sx={{ bgcolor: "background.paper" }}>
-          {ListPatientCared.map((e) => {
+        <List
+          sx={{
+            width: "100%",
+            maxWidth: 360,
+            bgcolor: "background.paper",
+            position: "relative",
+            overflow: "auto",
+            maxHeight: 300,
+            "& ul": { padding: 0 },
+          }}
+        >
+          {ListPatientCared.map((e, index) => {
             const labelId = `checkbox-list-label-${e.firstName}`;
             return (
               <ListItem
                 className="ListItem"
-                key={e.Risk}
+                key={index}
                 secondaryAction={
                   <IconButton edge="end" aria-label="comments">
                     <FactCheckIcon />

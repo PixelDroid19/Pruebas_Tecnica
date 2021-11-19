@@ -86,7 +86,7 @@ export const registerPatients = (
       professional,
       attended,
     };
-    addDoc(collection(DB, "Patients"), newPatients)
+    addDoc(collection(DB, `${Query}`), newPatients)
       .then((resp) => {
         dispatch(registerPatientsSincrono(newPatients));
       })
@@ -104,24 +104,28 @@ export const registerPatientsSincrono = (patients) => {
 };
 
 //Lectura
-export const lisPatients = () => {
+export const ListPatients = (Coll = "Patients") => {
   return async (dispatch) => {
-    const querySnapshot = await getDocs(collection(DB, "Patients"));
+    const querySnapshot = await getDocs(collection(DB, Coll));
     const patients = [];
     querySnapshot.forEach((doc) => {
       patients.push({
         ...doc.data(),
       });
     });
-    dispatch(list(patients));
+    dispatch(List(patients, Coll));
   };
 };
 
-export const list = (patients) => {
-  return {
-    type: typesPatients.List,
-    payload: patients,
-  };
+export const List = (patients, Coll) => {
+  switch (Coll) {
+    case "Patients":
+      return { type: typesPatients.List, payload: patients };
+    case "urgency":
+      return { type: typesPatients.Urgency, payload: patients };
+    default:
+      return [];
+  }
 };
 
 //Editar

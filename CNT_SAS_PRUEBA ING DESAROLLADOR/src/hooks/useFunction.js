@@ -145,7 +145,34 @@ export const ExtraFeatures = (Age, priorida) => {
   //Pacientes atendididos
   const ListPatientsCared = (Array, sel) => {
     let NewArray = [];
-    if (sel) {
+
+    switch (sel) {
+      case true:
+        for (let i = 0; i < Array.length; i++) {
+          if (Array[i].attended === true) {
+            NewArray.push(Array[i]);
+          }
+        }
+        break;
+
+      case false:
+        for (let i = 0; i < Array.length; i++) {
+          if (Array[i].attended === false) {
+            NewArray.push(Array[i]);
+          }
+        } break;
+      
+      case 'Old': 
+      for (let i = 0; i < Array.length; i++) {
+        if (Array[i].attended === false && Array[i].age >= 41) {
+          NewArray.push(Array[i]);
+        }
+      } break;
+
+      default: return 'error';
+    }
+
+    /*if (sel) {
       for (let i = 0; i < Array.length; i++) {
         if (Array[i].attended === true) {
           NewArray.push(Array[i]);
@@ -163,7 +190,8 @@ export const ExtraFeatures = (Age, priorida) => {
           NewArray.push(Array[i]);
         }
       }
-    }
+    }*/
+    
     return NewArray;
   };
 

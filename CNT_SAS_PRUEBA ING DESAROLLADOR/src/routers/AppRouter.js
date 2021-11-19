@@ -7,9 +7,11 @@ import { PublicRoute } from "./PublicRoute";
 import { useDispatch } from "react-redux";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { loginEmailPassword } from "../Redux/Actions/actionLogin";
-import { lisPatients } from "../Redux/Actions/actionPatients";
+import { ListPatients } from "../Redux/Actions/actionPatients";
+import { useSelector } from "react-redux";
 
 export default function AppRouter() {
+  const { Patients } = useSelector((store) => store.Patients);
   const dispatch = useDispatch();
 
   const [checking, setChecking] = useState(true);
@@ -20,7 +22,8 @@ export default function AppRouter() {
     onAuthStateChanged(auth, (user) => {
       if (user?.uid) {
         dispatch(loginEmailPassword(user.uid, user.displayName));
-        dispatch(lisPatients());
+        dispatch(ListPatients("Patients"));
+        dispatch(ListPatients("urgency"));
         setIsLoggedIn(true);
       } else {
         setIsLoggedIn(false);
@@ -31,11 +34,11 @@ export default function AppRouter() {
 
   if (checking) {
     return (
-      <div class="text-center position-absolute top-50 start-50 translate-middle">
-        <div class="spinner-border row" role="status">
-          <span class="visually-hidden"></span>
+      <div className="text-center position-absolute top-50 start-50 translate-middle">
+        <div className="spinner-border row" role="status">
+          <span className="visually-hidden"></span>
         </div>
-        <div class="row">
+        <div className="row">
           <span>Loading...</span>
         </div>
       </div>
